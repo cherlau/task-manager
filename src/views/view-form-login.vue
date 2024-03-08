@@ -18,10 +18,8 @@
                 <a href="https://github.com/cherlau" target="_blank">Esqueci minha senha</a>
             </form>
         </div>
-
     </div>
 </template>
-
 
 <script>
 import { ref } from 'vue';

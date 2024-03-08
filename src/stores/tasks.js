@@ -3,7 +3,7 @@ import { defineStore } from 'pinia';
 export const useTasks = defineStore({
   id: 'tasks',
   state: () => ({
-    logged: false,
+    logged: true,
     user: {},
     tasks: [],
     tasksOrdered: [],

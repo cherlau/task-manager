@@ -2,6 +2,7 @@
     <div class="sidebar-module-item" :class="{ 'highlighted': isHighlighted }" @click="toggleCategories">
         <span v-html="module.icon"></span>
         <h3>{{ module.name }}</h3>
+        {{ isHighlighted }}
     </div>
 </template>
 
@@ -15,7 +16,8 @@ export default {
     },
     methods: {
         toggleCategories() {
-            this.$emit('moduleClick', this.module.categories, this.moduleName)
+            this.$emit('clickChangeView', this.module.categories, this.moduleName)
+            this.$emit('clickChangeHighlight', this.moduleName);
         }
     },
 }

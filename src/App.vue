@@ -1,10 +1,12 @@
 <template>
-  <page-public>
-    <view-form-login></view-form-login>
-  </page-public>
-
   <div>
-    <page-private></page-private>
+
+    <page-public v-if="!logged">
+      <view-form-login></view-form-login>
+    </page-public>
+
+    <page-private v-else></page-private>
+
   </div>
 </template>
 
@@ -12,6 +14,8 @@
 import PagePublic from "@/templates/page-public";
 import ViewFormLogin from "@/views/view-form-login";
 import PagePrivate from "@/templates/page-private.vue"
+import { useTasks } from "@/stores/tasks";
+import { watch, ref, onBeforeMount } from "vue";
 
 //import TaskPage from "@/views/TaskPage";
 
@@ -21,7 +25,24 @@ export default {
     PagePrivate,
     PagePublic,
     ViewFormLogin
-  }
+  },
+  setup() {
+    const store = useTasks();
+    const logged = ref(store.logged);
+
+    onBeforeMount(() => {
+      store.loadLoggedStateFromLocalStorage();
+    });
+
+    watch(
+      () => store.logged,
+      (newTasks) => {
+        logged.value = newTasks;
+      }
+    );
+
+    return { logged };
+  },
 };
 </script>
 

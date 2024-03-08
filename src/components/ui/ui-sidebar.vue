@@ -5,8 +5,9 @@
             <div class="sidebar-component-container">
                 <div class="sidebar-module-content">
                     <ui-sidebar-modules v-for="(module, key) in modules" :key="key" :module="module" :moduleName="key"
-                        :isHighlighted="highlightedModule === key"
-                        @moduleClick="handleModuleClick"></ui-sidebar-modules>
+                        :isHighlighted="highlightedModule === key" @clickChangeView="handleModuleClick"
+                        @clickChangeHighlight="emitClick(key)"></ui-sidebar-modules>
+                    ======{{ highlightedModule }}
                 </div>
             </div>
         </div>
@@ -24,6 +25,11 @@ export default {
     components: {
         UiSidebarModules,
         UiSidebarModuleCategories
+    },
+    methods: {
+        emitClick(key) {
+            this.$emit('modulesClick', key)
+        }
     },
     setup() {
         const modules = {
@@ -69,8 +75,10 @@ export default {
         const highlightedModule = ref('dashboard')
 
         const handleModuleClick = (categories, moduleName) => {
+            console.log('entrou')
             categoriesList.value = categories
             highlightedModule.value = moduleName
+            console.log('highlightedModule', highlightedModule.value)
         };
 
         return { modules, handleModuleClick, categoriesList, highlightedModule }
