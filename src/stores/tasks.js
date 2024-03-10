@@ -3,7 +3,7 @@ import { defineStore } from 'pinia';
 export const useTasks = defineStore({
   id: 'tasks',
   state: () => ({
-    logged: true,
+    logged: false,
     user: {},
     tasks: [],
     tasksOrdered: [],
@@ -12,9 +12,9 @@ export const useTasks = defineStore({
   }),
   actions: {
     createTask(obj) {
-      const task = {...obj ,id: this.id, finished: false };
+      const randomId =  Math.floor(Math.random() * 1000);
+      const task = {...obj , id: randomId, finished: false };
       this.tasks.push(task);
-      this.id++;
       this.orderTasks();
       this.taskCountsByType();
       this.saveTasksToLocalStorage();

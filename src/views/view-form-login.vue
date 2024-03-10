@@ -3,19 +3,36 @@
         <div class="form-content flex-column">
             <h2>Entre com seus dados de acesso.</h2>
             <form @submit.prevent="submitLogin">
-                <div class="input-user">
-                    <label for="user">Nome de usuário ou e-mail:</label>
-                    <input type="text" id="user" v-model="user" />
-                </div>
-                <div class="input-password">
-                    <label for="password">Senha:</label>
-                    <input type="password" id="password" v-model="password" />
-                </div>
-                <button type="submit">Entrar</button>
+
+                <ui-input 
+                    label="Nome de usuário ou e-mail:"
+                    label-color="#5a7186" 
+                    input-height="51px" 
+                    id="user"
+                    :value="user"
+                    v-model="user"
+                    ></ui-input>
+                    
+                <ui-input 
+                    type="password"
+                    label="Senha:"
+                    label-color="#5a7186" 
+                    input-height="51px" 
+                    id="password"
+                    :value="password"
+                    v-model="password"
+                    ></ui-input>
+
+                <ui-button
+                    type="submit"
+                    color="#fff"
+                    design="md-16 sucess"
+                    :loading="loading">Entrar</ui-button>
+
                 <div class="message-error" v-show="showError">
                     <p>Usuário ou senha inválidos, tente novamente</p>
                 </div>
-                <a href="https://github.com/cherlau" target="_blank">Esqueci minha senha</a>
+                <a href="#">Esqueci minha senha</a>
             </form>
         </div>
     </div>
@@ -24,23 +41,35 @@
 <script>
 import { ref } from 'vue';
 import useLocalStorage from '@/composable/useLocalStorage '
+import UiInput from '@/components/ui/ui-input'
+import UiButton from '@/components/ui/ui-button'
 
 export default {
     name: 'ViewFormLogin',
+    components:{
+        UiInput,
+        UiButton
+    },
     setup() {
-        const { saveData, recebeDados } = useLocalStorage();
+        const { saveData, recebeDados } = useLocalStorage()
 
         saveData()
 
         const user = ref('')
         const password = ref('')
         const showError = ref(false)
+        const loading = ref(false)
 
         function submitLogin() {
-            showError.value = recebeDados(user.value, password.value)
+            loading.value = true
+
+            setTimeout(() => {
+                showError.value = recebeDados(user.value, password.value)
+                loading.value = false
+            }, "2000");
         }
 
-        return { user, password, submitLogin, showError };
+        return { user, password, submitLogin, showError, loading }
     },
 };
 </script>
@@ -92,17 +121,12 @@ button {
     border-radius: 5px;
     margin: 18px 0 22px;
     width: 100%;
-
 }
 
 a {
     font-size: 14px;
     font-weight: 600;
     color: #3198ff;
-}
-
-.input-user {
-    margin-bottom: 18px;
 }
 
 .message-error {

@@ -1,10 +1,9 @@
 <template>
     <div class="task-page">
-        <ui-sidebar @modulesClick="handleClick"></ui-sidebar>
+        <ui-sidebar class="side-bar" @modulesClick="handleClick"></ui-sidebar>
         <div class="task-page-content">
             <ui-header></ui-header>
-
-            <component :is="moduleSelect"></component>
+            <component :is="moduleSelected"></component>
         </div>
     </div>
 </template>
@@ -33,20 +32,16 @@ export default {
             moduleKey.value = key;
         }
 
-        const moduleSelect = computed(() => {
+        const moduleSelected = computed(() => {
             switch (moduleKey.value) {
-                case "dashboard":
-                    return ViewDashboard;
-                case "tasks":
-                    return ViewTasks;
-                case "settings":
-                    return ViewSettings;
-                default:
-                    return ViewDashboard;
+                case "dashboard": return ViewDashboard;
+                case "tasks":     return ViewTasks;
+                case "settings":  return ViewSettings;
+                default:          return ViewDashboard;
             }
         });
 
-        return { handleClick, moduleSelect };
+        return { handleClick, moduleSelected };
     },
 };
 </script>

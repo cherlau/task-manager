@@ -1,18 +1,22 @@
 <template>
     <div class="sidebar-categorie-item-content">
-        <button @click="selectCategorie(categorieName); toggleCategories()" :class="{ 'highlighted': isHighlighted }">
-            <i class="fa-solid fa-chevron-right"></i>
-            {{ categorie.name }} <div class="categorie-item-count" v-show="tipoCount[categorieName] > 0">{{
-            tipoCount[categorieName] }}</div></button>
+        <ui-button @click-button="selectCategorie(categorieName); toggleCategories()" class="categories-item-btn" leftIcon="fa-solid fa-chevron-right" :design="buttonDesign.value">
+            {{ categorie.name }}
+            <span class="categorie-item-count" v-show="tipoCount[categorieName] > 0">{{ tipoCount[categorieName] }}</span>
+        </ui-button>
     </div>
 </template>
 
 <script>
+import UiButton from '@/components/ui/ui-button'
 import { useTasks } from '@/stores/tasks'
-import { ref, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 
 export default {
     name: 'UiSidebarModuleCategoriesItem',
+    components: {
+        UiButton
+    },
     props: {
         categorie: Object,
         categorieName: String,
@@ -23,47 +27,58 @@ export default {
             this.$emit('categorieClick', this.categorieName)
         }
     },
-    setup() {
+    setup(props) {
         const store = useTasks();
-        const tipoCount = ref(store.taskCountsByType())
+        const tipoCount = ref(store.taskCountsByType());
 
-        watch(() => store.taskCountsByType(), (newValue) => {
-            tipoCount.value = newValue
+        const buttonDesign = ref('')
+
+        buttonDesign.value = computed(() => {
+            if(props.isHighlighted) return 'highlighted'
+            return ''
         })
 
+        watch(() => store.taskCountsByType(), (newValue) => {
+            tipoCount.value = newValue;
+        });
+
         function selectCategorie(categorie) {
-            store.categorie = categorie
+            store.categorie = categorie;
         }
 
         return {
-            selectCategorie, tipoCount
-        }
+            selectCategorie,
+            tipoCount,
+            buttonDesign
+        };
     }
 }
 </script>
 
+<!-- Estilos (sem alterações) -->
+
 <style scoped>
-.sidebar-categorie-item-content:nth-child(3) div {
+.sidebar-categorie-item-content:nth-child(3) span {
     background-color: #ff2e79;
 }
 
-.sidebar-categorie-item-content:nth-child(4) div {
+.sidebar-categorie-item-content:nth-child(4) span {
     background-color: #ffc42e;
 }
 
-.sidebar-categorie-item-content:nth-child(5) div {
+.sidebar-categorie-item-content:nth-child(5) span {
     background-color: #abc5d4;
 }
 
-.sidebar-categorie-item-content .highlighted {
-    color: #2693ff;
+.sidebar-categorie-item-content .highlighted button {
+    color: #2693ff ;
 }
 
 .highlighted i {
     color: #2693ff;
 }
 
-button {
+.categories-item-btn {
     background-color: #ffffff00;
     font-size: 14px;
     font-weight: 700;

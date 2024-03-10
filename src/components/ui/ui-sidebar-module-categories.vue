@@ -26,8 +26,6 @@ export default {
         const highlightedModule = ref('all')
 
         const handleModuleClick = (categorie) => {
-            console.log(categorie)
-
             highlightedModule.value = categorie
         };
         return { handleModuleClick, highlightedModule }

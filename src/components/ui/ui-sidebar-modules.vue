@@ -2,7 +2,6 @@
     <div class="sidebar-module-item" :class="{ 'highlighted': isHighlighted }" @click="toggleCategories">
         <span v-html="module.icon"></span>
         <h3>{{ module.name }}</h3>
-        {{ isHighlighted }}
     </div>
 </template>
 

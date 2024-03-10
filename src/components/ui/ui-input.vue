@@ -1,0 +1,94 @@
+<template>
+    <div class="flex-column">
+      <label v-if="label" :for="id" :style="{'color' : labelColor}">{{ label }}</label>
+      <input 
+          :type="type"
+          :id="id"
+          :value="value"
+          :placeholder="placeholder"
+          :class="design"
+          :disabled="disabled"
+          :maxlength="maxlength"
+          :style="{'height': inputHeight}"
+          @input="updateValue"
+      />
+      <i v-if="icon" :class="icon"></i>
+    </div>
+</template>
+  
+<script>
+  export default{
+      name: 'ui-input',
+      props: {
+          label: {
+              type: String,
+              required: false,
+              default: ''
+          },
+          type: {
+              type: String,
+              required: false,
+              default: 'text'
+          },
+          id: { 
+              type: String,
+              required: false,
+              default: ''
+          },
+          value: {
+              type: null,
+              required: false,
+              default: ''
+          },
+          placeholder: {
+              type: String,
+              required: false,
+              default: null
+          },
+          disabled: {
+              type: Boolean,
+              required: false,
+              default: false
+          },
+          maxlength: {
+              type: [String, Number],
+              required: false,
+              default: null
+          },
+          design: {
+              type: [String, Object],
+              required: false,
+              default: ''
+          },
+          labelColor: {
+              type: String,
+              default: ''
+          },
+          inputHeight: {
+              type: [String, Number],
+              default: 'inherit'
+          },
+          icon: {
+              type: String,
+              default: ''
+          }
+      },
+      methods: {
+        updateValue(event){
+            this.$emit('update:modelValue', event.target.value)
+        }
+      }
+  }
+</script>
+  
+<style scoped>
+label{
+    margin-bottom: 4px;
+}
+
+input{
+    margin-bottom: 18px;
+}
+
+</style>
+  

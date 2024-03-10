@@ -17,8 +17,6 @@ import PagePrivate from "@/templates/page-private.vue"
 import { useTasks } from "@/stores/tasks";
 import { watch, ref, onBeforeMount } from "vue";
 
-//import TaskPage from "@/views/TaskPage";
-
 export default {
   name: "App",
   components: {
@@ -46,10 +44,6 @@ export default {
 };
 </script>
 
-
-
 <style lang="stylus" scoped>
-
-@import './assets/style.styl';
-
+  @import './assets/style.styl'; 
 </style>
