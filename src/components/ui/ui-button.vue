@@ -2,8 +2,7 @@
         <button
             :type="type"
             :disabled="disabled"
-            :class="design"
-            class="ui-button"
+            :class="[design, 'ui-button', { 'disabled': disabled }]"
             @click="callback($event)"
         >
             <i v-if="leftIcon" :class="leftIcon"></i>
@@ -73,8 +72,7 @@ export default {
 
 
 <style lang="stylus" scoped>
-
-button{
+.ui-button{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -110,5 +108,11 @@ button{
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
 }
 
+.disabled{
+    background-color: #a6c1d2
+}
 
+.ui-button svg{
+    padding: 23px
+}
 </style>

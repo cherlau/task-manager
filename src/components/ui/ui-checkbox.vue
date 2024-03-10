@@ -1,43 +1,43 @@
 <template>
     <input type="checkbox" v-model="model" :value="value" :class="design"/>
-    <span :class="{'task-checked-text': modelValue}" @click="handleClick">{{ label }}</span>
-  </template>
+    <span class="checkbox-span" :class="{'task-checked-text': modelValue}" @click="handleClick">{{ label }}</span>
+</template>
   
-  <script >
-    export default {
-      props:{
-        modelValue: { 
-            type: [Array, Boolean] 
-        },
-        value: { 
-            type: [Boolean, Object] 
-        },
-        label: { 
-            type: String 
-        },
-        design: {
-            type: String 
-        }
+<script >
+  export default {
+    props:{
+      modelValue: { 
+          type: [Array, Boolean] 
       },
-      methods:{
-        handleClick(){
-            this.$emit("click-title")
-        }
+      value: { 
+          type: [Boolean, Object] 
       },
-      computed:{
-        model:{
-           get() {
-              return this.modelValue;
-            },
-            set(value) {
-              this.$emit("update:modelValue", value);
-            }
-        }
+      label: { 
+          type: String 
+      },
+      design: {
+          type: String 
+      }
+    },
+    methods:{
+      handleClick(){
+          this.$emit("click-title")
+      }
+    },
+    computed:{
+      model:{
+         get() {
+            return this.modelValue;
+          },
+          set(value) {
+            this.$emit("update:modelValue", value);
+          }
       }
     }
-  </script>
+  }
+</script>
 
-  <style scoped>
+<style scoped>
   
 .custom-checkbox {
     appearance: none;
@@ -75,8 +75,13 @@
     display: block;
 }
 
+.checkbox-span{
+  cursor: pointer;
+}
+
 .task-checked-text {
     text-decoration: line-through;
     color: #8d9ca9;
 }
+
 </style>

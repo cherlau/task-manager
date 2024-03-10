@@ -3,33 +3,38 @@
       <div class="task-item" :class="{ 'task-item-bottom-line': showEditTask || showDescription }">
         <div :class="{ 'task-checked-text': finishedCheck }">
 
-          <ui-checkbox  :label="task.title" v-model="finishedCheck" design="custom-checkbox" @click-title="showDescription = !showDescription"/>
+          <ui-checkbox  
+            :label="task.title" 
+            v-model="finishedCheck" 
+            design="custom-checkbox"
+            @click-title="showDescription = !showDescription"
+          />
 
           <span v-if="translateTipo()" class="task-item-tipo" :class="{'urgente-background': translateTipo() === 'Urgente', 'importante-background': translateTipo() === 'Importante'}">{{ translateTipo() }}</span>
         </div>
 
-          <div v-if="showMenu" class="task-item-menu">
-            <button @click="startTaskEdit" :class="{ 'task-item-menu-clicked': showEditTask }">
-              <span></span>Editar
-            </button>
-            <button @click="removeTask(task.id)" :class="{ 'task-item-menu-clicked': showRemoveConfirm }">
-              <span></span>Excluir
-            </button>
-          </div>
-
-
-            <i @click="showMenu = !showMenu" class="fa-solid fa-ellipsis-vertical"
-              :class="{ 'task-item-menu-clicked-icon': showMenu }"></i>
+        <ui-kebab-menu 
+            @start-task-edit="startTaskEdit" 
+            @remove-task="removeTask" 
+            :task-id="task.id" 
+            :show-edit-task="showEditTask" 
+            :show-remove-confirm="showRemoveConfirm"
+        ></ui-kebab-menu>
       </div>
-            <div class="task-item-description" v-if="showDescription">
-              {{ task.description }}
-            </div>
-            <ui-task-edit :showEditTask="showEditTask" @task-edited="handleTaskEdited" @cancel-edit="showEditTask = !showEditTask"
-              :task="task" :taskId="task.id"></ui-task-edit>
 
-            <ui-modal @close="toggleModal" :modalActive="modalActive">
-                <ui-task-remove-card @confirm-remove="confirmRemoveTask" @cancel-remove="toggleModal"></ui-task-remove-card>
-            </ui-modal>
+      <ui-task-edit 
+        :showEditTask="showEditTask" 
+        @task-edited="handleTaskEdited" 
+        @cancel-edit="showEditTask = !showEditTask"
+        :task="task" 
+        :taskId="task.id"
+      ></ui-task-edit>
+      
+      <div class="task-item-description" v-if="showDescription"> {{ task.description }} </div>
+
+      <ui-modal @close="toggleModal" :modalActive="modalActive">
+        <ui-task-remove-card @confirm-remove="confirmRemoveTask" @cancel-remove="toggleModal"></ui-task-remove-card>
+      </ui-modal>
     </div>
 </template>
 
@@ -38,6 +43,7 @@ import UiTaskRemoveCard from "@/components/ui/ui-task-remove-card"
 import UiTaskEdit from "@/components/ui/ui-task-edit"
 import UiModal from "@/components/ui/ui-modal"
 import UiCheckbox from "@/components/ui/ui-checkbox"
+import UiKebabMenu from "@/components/ui/ui-kebab-menu"
 import { ref, watch } from "vue";
 import { useTasks } from "@/stores/tasks";
 
@@ -50,7 +56,8 @@ export default {
         UiTaskRemoveCard,
         UiTaskEdit,
         UiModal,
-        UiCheckbox
+        UiCheckbox,
+        UiKebabMenu
     },
     setup(props) {
         const store = useTasks();
@@ -68,6 +75,7 @@ export default {
         };
 
         const removeTask = (taskId) => {
+            console.log(taskId)
             showRemoveConfirm.value = true
             modalActive.value = true;
             taskIdToRemove.value = taskId;
@@ -153,10 +161,6 @@ export default {
 </script>
 
 <style scoped>
-button{
-    border: none;
-}
-
 .task-item-content {
     padding: 14px;
     background-color: #fff;
@@ -179,43 +183,6 @@ label {
 
 .task-checked-content {
     background-color: #F4FAFD;
-}
-
-.fa-ellipsis-vertical {
-    font-size: 20px;
-    color: #9caec1;
-    cursor: pointer;
-    z-index: 1;
-}
-
-.task-item-menu {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    position: absolute;
-    right: -7px;
-    top: -1px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    height: 74px;
-    width: 109px;
-    background-color: #fff;
-    border-radius: 5px;
-    gap: 10px;
-}
-
-.task-item-menu button {
-    background-color: transparent;
-    color: #7189a0;
-}
-
-.task-item-menu span {
-    display: inline-block;
-    background-color: #d6e6ef;
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    margin: 0 6px 0 9px;
 }
 
 .task-item-menu-clicked {

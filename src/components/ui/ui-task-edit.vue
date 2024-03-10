@@ -1,26 +1,25 @@
 <template>
     <div v-if="showEditTask" class="task-edit-content">
-        <div class="flex-column">
-            <ui-input 
-            id="titulo"
-            label="Titulo:"
-            design="sm"
-            :value="editTitle"
-            v-model="editTitle"
-            ></ui-input>
+   
+        <ui-input 
+          id="titulo"
+          label="Titulo:"
+          design="sm"
+          :value="editTitle"
+          v-model="editTitle"
+        ></ui-input>
 
-        </div>
-        <div class="flex-column">
-            <label for="">Descricao:</label>
-            <textarea type="text" v-model="editDescription"></textarea>
-        </div>
+        <ui-textarea 
+          id="descrição"
+          label="Descrição:"
+          label-color="#5a7186"
+          height="100px"
+          :value="editDescription"
+          v-model="editDescription"
+        ></ui-textarea>
+
         <div class="task-edit-radios">
-            <input type="radio" name="editUrgent" id="editUrgent" value="urgent" v-model="editTipo" />
-            <label for="editUrgent">Urgente</label>
-            <input type="radio" name="editImportant" id="editImportant" value="important" v-model="editTipo" />
-            <label for="editImportant">Importante</label>
-            <input type="radio" name="editOthers" id="editOthers" value="others" v-model="editTipo" />
-            <label for="editOthers">Outras</label>
+            <ui-radio :options="optionsRadio" v-model="editTipo"></ui-radio>
         </div>
         <div class="task-edit-buttons">
             <ui-button design="sucess xs" @click-button="finishEdit(taskId)">Salvar</ui-button>
@@ -31,6 +30,8 @@
 
 <script>
 import UiInput from '@/components/ui/ui-input'
+import uiTextarea from '@/components/ui/ui-textarea';
+import UiRadio from '@/components/ui/ui-radio'
 import UiButton from '@/components/ui/ui-button'
 import { ref } from "vue";
 
@@ -38,6 +39,8 @@ export default {
     name: "UiTaskEdit",
     components:{
         UiInput,
+        uiTextarea,
+        UiRadio,
         UiButton
     },
     props: {
@@ -48,6 +51,11 @@ export default {
     methods: {
         finishEdit(taskId) {
             if (this.editTitle !== "") {
+
+                if (this.editTipo === 'Urgente') this.editTipo = 'urgent'
+                if (this.editTipo === 'Importante') this.editTipo = 'important'
+                if (this.editTipo === 'Outras') this.editTipo = 'others'
+
                 this.$emit("task-edited", {
                     taskId: taskId,
                     editTitle: this.editTitle,
@@ -69,9 +77,10 @@ export default {
         const editTitle = ref(props.task.title);
         const editDescription = ref(props.task.description);
         const editTipo = ref(props.task.tipo);
+        const optionsRadio = ref(['Urgente', 'Importante', 'Outras'])
 
 
-        return { editTitle, editDescription, editTipo };
+        return { editTitle, editDescription, editTipo, optionsRadio };
     },
 };
 </script>
@@ -100,8 +109,8 @@ label {
     color: #64788b;
 }
 
-.task-edit-radios label {
-    margin: 0 10px 0 4px;
+.task-edit-radios{
+    display: flex;
 }
 
 .task-edit-buttons{

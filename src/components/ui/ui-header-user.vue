@@ -41,11 +41,11 @@ export default {
     border-radius: 50%;
 }
 
-p {
+.user-content p {
     font-weight: 700;
 }
 
-span {
+.user-content span {
     font-size: 13px;
     font-weight: 700;
     color: #2693FF;
