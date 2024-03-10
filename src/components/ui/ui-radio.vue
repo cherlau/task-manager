@@ -1,14 +1,16 @@
 <template>
-  <div class="radio-button-group" v-for="(option, key) in options" :key="key">
-    <input
-      type="radio"
-      name="radio-input"
-      :value="option"
-      :id="option"
-      :checked="option === selectedOption"
-      @change="changed(option)"
-    />
-    <label class="radio-button-label" :for="option">{{ option }}</label>
+  <div class="radio-button-group" >
+    <div v-for="(option, key) in options" :key="key">
+      <input
+        type="radio"
+        name="radio-input"
+        :value="option"
+        :id="option"
+        :checked="option === selectedOption"
+        @change="changed(option)"
+      />
+      <label class="radio-button-label" :for="option">{{ option }}</label>
+    </div>
   </div>
 </template>
 

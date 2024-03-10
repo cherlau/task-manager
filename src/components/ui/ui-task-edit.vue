@@ -93,22 +93,6 @@ export default {
     gap: 10px;
 }
 
-input {
-    padding: 8px;
-}
-
-textarea {
-    max-width: 560px;
-    max-width: 560px;
-    min-height: 80px;
-    padding: 8px;
-}
-
-label {
-    font-size: 14px;
-    color: #64788b;
-}
-
 .task-edit-radios{
     display: flex;
 }

@@ -176,25 +176,8 @@ export default {
     position: relative;
 }
 
-label {
-    font-size: 17px;
-    cursor: pointer;
-}
-
 .task-checked-content {
     background-color: #F4FAFD;
-}
-
-.task-item-menu-clicked {
-    color: #395068 !important;
-}
-
-.task-item-menu-clicked span {
-    background-color: #1ad18f;
-}
-
-.task-item-menu-clicked-icon {
-    color: #2693ff;
 }
 
 .task-item-tipo {

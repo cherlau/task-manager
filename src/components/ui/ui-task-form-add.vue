@@ -111,25 +111,8 @@ export default {
   border: none;
 }
 
-h2 {
+.modal-add h2{
   margin: 9px 0 25px;
-}
-
-label {
-  font-size: 14px;
-  color: #64788b;
-}
-
-input {
-  padding: 13px;
-}
-
-textarea {
-  width: 560px;
-  height: 180px;
-  resize: none;
-  overflow: auto;
-  padding: 13px;
 }
 
 .modal-add-bottom {
@@ -138,7 +121,4 @@ textarea {
   align-items: center;
 }
 
-.modal-add-radios label {
-  margin: 0 10px 0 7px;
-}
 </style>

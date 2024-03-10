@@ -38,6 +38,8 @@ export default defineComponent({
     width: 100%;
     padding: 18px 0 18px 18px;
     margin-bottom: 30px;
+    background-color: #e9f4fb;
+    /* border: 3px solid #bfdaeb */
 }
 
 input::placeholder {

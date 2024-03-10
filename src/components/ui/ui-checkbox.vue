@@ -1,6 +1,8 @@
 <template>
+  <div>
     <input type="checkbox" v-model="model" :value="value" :class="design"/>
     <span class="checkbox-span" :class="{'task-checked-text': modelValue}" @click="handleClick">{{ label }}</span>
+  </div>
 </template>
   
 <script >

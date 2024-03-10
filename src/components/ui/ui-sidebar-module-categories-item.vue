@@ -55,8 +55,6 @@ export default {
 }
 </script>
 
-<!-- Estilos (sem alterações) -->
-
 <style scoped>
 .sidebar-categorie-item-content:nth-child(3) span {
     background-color: #ff2e79;
@@ -74,10 +72,6 @@ export default {
     color: #2693ff ;
 }
 
-.highlighted i {
-    color: #2693ff;
-}
-
 .categories-item-btn {
     background-color: #ffffff00;
     font-size: 14px;
@@ -86,11 +80,6 @@ export default {
     color: #283848;
     display: flex;
     align-items: center;
-}
-
-i {
-    font-size: 10px;
-    padding-right: 7px;
 }
 
 .categorie-item-count {

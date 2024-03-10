@@ -1,5 +1,5 @@
 <template>
-    <div class="flex-column">
+    <div class="flex-column ui-textarea">
       <label v-if="label" :for="id" :style="{'color' : labelColor}">{{ label }}</label>
       <textarea 
           :id="id"
@@ -65,16 +65,16 @@
 </script>
   
 <style scoped>
-label{
-    margin-bottom: 4px;
-}
 
-textarea {
+.ui-textarea  textarea {
     resize: none;
     overflow: auto;
     padding: 13px;
 }
 
+.ui-textarea {
+    margin-bottom: 4px;
+}
 
 </style>
   

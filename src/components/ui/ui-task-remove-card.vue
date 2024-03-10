@@ -64,7 +64,7 @@ export default {
     margin: 20px 0 10px;
 }
 
-p {
+.modal-remove p {
     color: #475e78;
     font-weight: 600;
 }
@@ -76,7 +76,7 @@ p {
     color: #283848;
 }
 
-strong {
+.modal-remove-title strong{
     color: #ff4874;
 }
 

@@ -77,11 +77,11 @@
 </script>
   
 <style scoped>
-label{
+.ui-input label{
     margin-bottom: 4px;
 }
 
-input{
+.ui-input input{
     margin-bottom: 18px;
 }
 
