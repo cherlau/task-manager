@@ -2,42 +2,42 @@
     <div class="task-item-content" :class="{ 'task-checked-content': finishedCheck }">
       <div class="task-item" :class="{ 'task-item-bottom-line': showEditTask || showDescription }">
         <div :class="{ 'task-checked-text': finishedCheck }">
-          <input type="checkbox" v-model="finishedCheck" class="custom-checkbox" />
-          <label @click="showDescription = !showDescription">{{ task.title }}</label>
-  
-          <span v-if="translateTipo()" class="task-item-tipo" :class="{
-      'urgente-background': translateTipo() === 'Urgente',
-      'importante-background': translateTipo() === 'Importante',
-    }">{{ translateTipo() }}</span>
-        </div>
-        <div v-if="showMenu" class="task-item-menu">
-          <button @click="startTaskEdit" :class="{ 'task-item-menu-clicked': showEditTask }">
-            <span></span>Editar
-          </button>
-          <button @click="removeTask(task.id)" :class="{ 'task-item-menu-clicked': showRemoveConfirm }">
-            <span></span>Excluir
-          </button>
-        </div>
-        <i @click="showMenu = !showMenu" class="fa-solid fa-ellipsis-vertical"
-          :class="{ 'task-item-menu-clicked-icon': showMenu }"></i>
-      </div>
-      <div class="task-item-description" v-if="showDescription">
-        {{ task.description }}
-      </div>
-      <ui-task-edit :showEditTask="showEditTask" @task-edited="handleTaskEdited" @cancel-edit="showEditTask = !showEditTask"
-        :task="task" :taskId="task.id"></ui-task-edit>
 
-        <ui-modal @close="toggleModal" :modalActive="modalActive">
-            <ui-task-remove-card @confirm-remove="confirmRemoveTask" @cancel-remove="toggleModal"></ui-task-remove-card>
-        </ui-modal>
+          <ui-checkbox  :label="task.title" v-model="finishedCheck" design="custom-checkbox" @click-title="showDescription = !showDescription"/>
 
+          <span v-if="translateTipo()" class="task-item-tipo" :class="{'urgente-background': translateTipo() === 'Urgente', 'importante-background': translateTipo() === 'Importante'}">{{ translateTipo() }}</span>
+        </div>
+
+          <div v-if="showMenu" class="task-item-menu">
+            <button @click="startTaskEdit" :class="{ 'task-item-menu-clicked': showEditTask }">
+              <span></span>Editar
+            </button>
+            <button @click="removeTask(task.id)" :class="{ 'task-item-menu-clicked': showRemoveConfirm }">
+              <span></span>Excluir
+            </button>
+          </div>
+
+
+            <i @click="showMenu = !showMenu" class="fa-solid fa-ellipsis-vertical"
+              :class="{ 'task-item-menu-clicked-icon': showMenu }"></i>
+      </div>
+            <div class="task-item-description" v-if="showDescription">
+              {{ task.description }}
+            </div>
+            <ui-task-edit :showEditTask="showEditTask" @task-edited="handleTaskEdited" @cancel-edit="showEditTask = !showEditTask"
+              :task="task" :taskId="task.id"></ui-task-edit>
+
+            <ui-modal @close="toggleModal" :modalActive="modalActive">
+                <ui-task-remove-card @confirm-remove="confirmRemoveTask" @cancel-remove="toggleModal"></ui-task-remove-card>
+            </ui-modal>
     </div>
 </template>
 
 <script>
 import UiTaskRemoveCard from "@/components/ui/ui-task-remove-card"
 import UiTaskEdit from "@/components/ui/ui-task-edit"
-import UiModal from "@/components/ui/ui-modal.vue"
+import UiModal from "@/components/ui/ui-modal"
+import UiCheckbox from "@/components/ui/ui-checkbox"
 import { ref, watch } from "vue";
 import { useTasks } from "@/stores/tasks";
 
@@ -49,7 +49,8 @@ export default {
     components: {
         UiTaskRemoveCard,
         UiTaskEdit,
-        UiModal
+        UiModal,
+        UiCheckbox
     },
     setup(props) {
         const store = useTasks();
@@ -100,33 +101,40 @@ export default {
         );
 
         function startTaskEdit() {
-      showEditTask.value = !showEditTask.value;
-    }
+            showEditTask.value = !showEditTask.value;
+        }
 
-    function handleTaskEdited(taskEdited) {
-      store.editTask(
-        taskEdited.taskId,
-        taskEdited.editTitle,
-        taskEdited.editDescription,
-        taskEdited.editTipo,
-        taskEdited.finished
-      );
-      showEditTask.value = false;
-      showMenu.value = false;
-    }
+        function handleTaskEdited(taskEdited) {
+          store.editTask(
+            taskEdited.taskId,
+            taskEdited.editTitle,
+            taskEdited.editDescription,
+            taskEdited.editTipo,
+            taskEdited.finished
+          );
+          showEditTask.value = false;
+          showMenu.value = false;
+        }
 
-    function translateTipo() {
-      switch (props.task.tipo) {
-        case "important":
-          return "Importante";
-        case "urgent":
-          return "Urgente";
-        default:
-          return false;
-      }
-    }
+        function translateTipo() {
+          switch (props.task.tipo) {
+            case "important":
+              return "Importante";
+            case "urgent":
+              return "Urgente";
+            default:
+              return false;
+          }
+        }
+
+        const handleCheckboxChange = (isChecked) => {
+          console.log(isChecked)
+          finishedCheck.value = isChecked;
+          updateFinishedStatus();
+        };
 
         return {
+            handleCheckboxChange,
             removeTask,
             confirmRemoveTask,
             showRemoveConfirm,
@@ -145,6 +153,10 @@ export default {
 </script>
 
 <style scoped>
+button{
+    border: none;
+}
+
 .task-item-content {
     padding: 14px;
     background-color: #fff;
@@ -165,49 +177,8 @@ label {
     cursor: pointer;
 }
 
-.custom-checkbox {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    width: 33px;
-    height: 33px;
-    background-color: #d7e4ef;
-    border: none;
-    border-radius: 4px;
-    outline: none;
-    cursor: pointer;
-    margin-right: 8px;
-    vertical-align: middle;
-    position: relative;
-}
-
-.custom-checkbox:checked {
-    background-color: #7ce7bf;
-    color: #fff;
-}
-
-.custom-checkbox::before {
-    content: "\2713";
-    font-size: 20px;
-    color: #fff;
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: none;
-}
-
-.custom-checkbox:checked::before {
-    display: block;
-}
-
 .task-checked-content {
     background-color: #F4FAFD;
-}
-
-.task-checked-text label {
-    text-decoration: line-through;
-    color: #8d9ca9;
 }
 
 .fa-ellipsis-vertical {

@@ -1,5 +1,5 @@
 <template>
-    <div class="flex-column">
+    <div class="flex-column ui-input">
       <label v-if="label" :for="id" :style="{'color' : labelColor}">{{ label }}</label>
       <input 
           :type="type"
@@ -9,7 +9,6 @@
           :class="design"
           :disabled="disabled"
           :maxlength="maxlength"
-          :style="{'height': inputHeight}"
           @input="updateValue"
       />
       <i v-if="icon" :class="icon"></i>
@@ -63,10 +62,6 @@
           labelColor: {
               type: String,
               default: ''
-          },
-          inputHeight: {
-              type: [String, Number],
-              default: 'inherit'
           },
           icon: {
               type: String,

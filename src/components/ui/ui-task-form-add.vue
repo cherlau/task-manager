@@ -1,13 +1,11 @@
 <template>
-    <div>
     <div class="modal-add">
         <h2>Cadastrar Tarefa</h2>
 
         <ui-input 
             id="titulo"
             label="Titulo:"
-            label-color="#5a7186" 
-            input-height="46px" 
+            design="lg"
             :value="title"
             v-model="title"
             ></ui-input>
@@ -20,25 +18,19 @@
             :value="description"
             v-model="description"
             ></ui-textarea>
-        
+
         <div class="modal-add-bottom">
-            <div class="modal-add-radios">
-                
-                <input type="radio" name="urgent" id="urgent" value="urgent" v-model="tipo" />
-                <label for="urgent">Urgente</label>
-                <input type="radio" name="important" id="important" value="important" v-model="tipo" />
-                <label for="important">Importante</label>
-            </div>
+            <ui-radio :options="options" v-model="tipo"></ui-radio>
             <ui-button @click-button="criarTask" design="sucess lg">Adicionar</ui-button>
         </div>
     </div>
-</div>
 </template>
 
 <script>
 import UiInput from '@/components/ui/ui-input'
 import UiTextarea from '@/components/ui/ui-textarea'
 import UiButton from '@/components/ui/ui-button'
+import UiRadio from '@/components/ui/ui-radio.vue'
 import { ref } from "vue";
 
 
@@ -47,7 +39,8 @@ export default {
     components:{
         UiButton,
         UiInput,
-        UiTextarea
+        UiTextarea,
+        UiRadio
     },
     props: {
         onCreateTask: Function,
@@ -61,9 +54,14 @@ export default {
         const title = ref("");
         const description = ref("");
         const tipo = ref("others");
+        const options = ref(['Urgente', 'Importante'])
 
         const criarTask = () => {
             if (title.value !== "" && description.value !== "") {
+
+                if(tipo.value === 'Urgente')    tipo.value = 'urgent'
+                if(tipo.value === 'Importante') tipo.value = 'important'
+
                 const task = {
                     title: title.value,
                     description: description.value,
@@ -78,7 +76,7 @@ export default {
             }
         };
 
-        return { title, description, tipo, criarTask };
+        return { title, description, tipo, criarTask, options };
     },
 };
 </script>
@@ -89,6 +87,7 @@ export default {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
+    min-width: 660px;
     padding: 20px 40px;
     border-radius: 7px;
     gap: 10px;

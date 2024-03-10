@@ -1,8 +1,14 @@
 <template>
     <div v-if="showEditTask" class="task-edit-content">
         <div class="flex-column">
-            <label for="">Título:</label>
-            <input type="text" v-model="editTitle" />
+            <ui-input 
+            id="titulo"
+            label="Titulo:"
+            design="sm"
+            :value="editTitle"
+            v-model="editTitle"
+            ></ui-input>
+
         </div>
         <div class="flex-column">
             <label for="">Descricao:</label>
@@ -24,12 +30,14 @@
 </template>
 
 <script>
+import UiInput from '@/components/ui/ui-input'
 import UiButton from '@/components/ui/ui-button'
 import { ref } from "vue";
 
 export default {
     name: "UiTaskEdit",
     components:{
+        UiInput,
         UiButton
     },
     props: {

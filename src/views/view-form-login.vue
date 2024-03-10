@@ -6,9 +6,8 @@
 
                 <ui-input 
                     label="Nome de usuário ou e-mail:"
-                    label-color="#5a7186" 
-                    input-height="51px" 
                     id="user"
+                    design="xl"
                     :value="user"
                     v-model="user"
                     ></ui-input>
@@ -16,9 +15,8 @@
                 <ui-input 
                     type="password"
                     label="Senha:"
-                    label-color="#5a7186" 
-                    input-height="51px" 
                     id="password"
+                    design="xl"
                     :value="password"
                     v-model="password"
                     ></ui-input>
@@ -26,7 +24,7 @@
                 <ui-button
                     type="submit"
                     color="#fff"
-                    design="md-16 sucess"
+                    design="xxl sucess"
                     :loading="loading">Entrar</ui-button>
 
                 <div class="message-error" v-show="showError">
@@ -89,11 +87,17 @@ export default {
     width: 370px;
 }
 
+
 h2 {
     font-size: 18px;
     margin-bottom: 33px;
     font-weight: 900;
 }
+
+input {
+    padding: 17px;
+}
+
 
 .form-content div {
     display: flex;
@@ -107,12 +111,13 @@ h2 {
     margin-bottom: 5px;
 }
 
-input {
-    padding: 17px;
+.form-content button{
+   width: 100%;
 }
 
 
-button {
+
+/* button {
     padding: 18px 0;
     color: #fff;
     font-size: 16px;
@@ -121,7 +126,7 @@ button {
     border-radius: 5px;
     margin: 18px 0 22px;
     width: 100%;
-}
+} */
 
 a {
     font-size: 14px;
