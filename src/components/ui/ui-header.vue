@@ -16,7 +16,9 @@ export default {
 
 
 </script>
-
+<style lang="stylus" scoped>
+    @import '../../assets/stylus/styles.styl';
+</style> 
 
 <style scoped>
 header {

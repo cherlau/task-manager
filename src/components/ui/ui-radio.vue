@@ -48,6 +48,10 @@ export default {
 };
 </script>
 
+<style lang="stylus" scoped>
+    @import '../../assets/stylus/styles.styl';
+</style> 
+
 <style>
 .radio-button-group {
   display: flex;

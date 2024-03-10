@@ -70,50 +70,6 @@ export default {
 
 </script>
 
-
-
 <style lang="stylus" scoped>
-.ui-button{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 5px;
-    }
-
-    i {
-    font-size: 10px;
-    padding-right: 7px;
-}
-
-.sidebar-categorie-item-content .highlighted{
-    color: #2693ff ;
-}
-
-.highlighted i {
-    color: #2693ff;
-}
-
-.btn-add-icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    bottom: 23px;
-    right: 28px;
-    border: none;
-    color: #fff;
-    font-size: 50px;
-    width: 76px;
-    height: 76px;
-    border-radius: 50%;
-    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
-}
-
-.disabled{
-    background-color: #a6c1d2
-}
-
-.ui-button svg{
-    padding: 23px
-}
-</style>
+    @import '../../assets/stylus/styles.styl';
+</style> 

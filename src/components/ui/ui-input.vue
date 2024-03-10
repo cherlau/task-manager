@@ -75,7 +75,9 @@
       }
   }
 </script>
-  
+<style lang="stylus" scoped>
+@import '../../assets/stylus/styles.styl';
+</style> 
 <style scoped>
 .ui-input label{
     margin-bottom: 4px;

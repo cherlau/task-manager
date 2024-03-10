@@ -55,6 +55,9 @@ export default {
 }
 </script>
 
+<style lang="stylus" scoped>
+    @import '../../assets/stylus/styles.styl';
+</style> 
 
 <style scoped>
 .sidebar-categorie-item-content:nth-child(3) span {

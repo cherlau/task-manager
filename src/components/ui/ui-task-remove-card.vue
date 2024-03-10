@@ -38,6 +38,10 @@ export default {
 };
 </script>
 
+<style lang="stylus" scoped>
+    @import '../../assets/stylus/styles.styl';
+</style> 
+
 <style scoped>
 .modal-remove {
     box-sizing: border-box;
