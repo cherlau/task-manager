@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { useTasks } from '@/stores/tasks'
+import { useTasks } from '@/store/tasks'
 
 export default {
     name: 'UiHeaderUser',
@@ -23,6 +23,9 @@ export default {
     }
 }
 </script>
+
+
+
 
 <style scoped>
 .user-content {

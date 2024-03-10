@@ -39,6 +39,9 @@
   }
 </script>
 
+
+
+
 <style scoped>
   
 .custom-checkbox {

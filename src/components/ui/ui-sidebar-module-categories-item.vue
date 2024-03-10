@@ -9,7 +9,7 @@
 
 <script>
 import UiButton from '@/components/ui/ui-button'
-import { useTasks } from '@/stores/tasks'
+import { useTasks } from '@/store/tasks'
 import { computed, ref, watch } from 'vue'
 
 export default {
@@ -54,6 +54,7 @@ export default {
     }
 }
 </script>
+
 
 <style scoped>
 .sidebar-categorie-item-content:nth-child(3) span {

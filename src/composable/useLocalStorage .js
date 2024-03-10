@@ -1,4 +1,4 @@
-import { useTasks } from '@/stores/tasks'
+import { useTasks } from '@/store/tasks'
 
 const useLocalStorage = () => {
   const store = useTasks();

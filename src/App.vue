@@ -2,7 +2,7 @@
   <div>
 
     <page-public v-if="!logged">
-      <view-form-login></view-form-login>
+      <view-login></view-login>
     </page-public>
 
     <page-private v-else></page-private>
@@ -12,9 +12,9 @@
 
 <script>
 import PagePublic from "@/templates/page-public";
-import ViewFormLogin from "@/views/view-form-login";
+import ViewLogin from "@/views/view-login";
 import PagePrivate from "@/templates/page-private.vue"
-import { useTasks } from "@/stores/tasks";
+import { useTasks } from "@/store/tasks";
 import { watch, ref, onBeforeMount } from "vue";
 
 export default {
@@ -22,7 +22,7 @@ export default {
   components: {
     PagePrivate,
     PagePublic,
-    ViewFormLogin
+    ViewLogin
   },
   setup() {
     const store = useTasks();
@@ -45,5 +45,5 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-  @import './assets/style.styl'; 
+  @import './assets/stylus/style.styl'; 
 </style>

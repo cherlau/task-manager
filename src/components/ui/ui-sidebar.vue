@@ -83,7 +83,6 @@ export default {
 }
 </script>
 
-
 <style scoped>
 .sidebar-component {
     background-color: #2693ff;

@@ -1,6 +1,6 @@
 <template>
     <div class="view-container">
-        <div style="width: 333px"></div>
+        <div class="view-placeholder"></div>
         <div class="view-content">
             <div class="view-content-text">
                 <h1>Minhas Tarefas</h1>
@@ -32,7 +32,7 @@ import UiTaskSearch from "@/components/ui/ui-task-search";
 import UiButton from "@/components/ui/ui-button"
 import UiModal from "@/components/ui/ui-modal"
 
-import { useTasks } from "@/stores/tasks";
+import { useTasks } from "@/store/tasks";
 import { ref, watch, computed, onBeforeMount } from "vue";
 
 export default {
@@ -167,49 +167,6 @@ export default {
 };
 </script>
 
-<style scoped>
-.view-container {
-    margin-top: 185px;
-    display: flex;
-    justify-content: center;
-    width: 100vw;
-}
-
-.view-content {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    max-width: 630px;
-}
-
-.view-content-text {
-    margin-bottom: 35px;
-}
-
-.btn-add-icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    bottom: 23px;
-    right: 28px;
-    background-color: #1ad18f;
-    border: none;
-    color: #fff;
-    font-size: 50px;
-    width: 76px;
-    height: 76px;
-    border-radius: 50%;
-    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
-}
-
-p {
-    font-weight: 600;
-    color: #77899e;
-    font-size: 1.1rem;
-}
-
-strong {
-    color: #2693ff;
-}
+<style lang="stylus" scoped>
+  @import '../assets/stylus/style.styl'; 
 </style>

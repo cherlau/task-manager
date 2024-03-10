@@ -17,6 +17,6 @@ export default {
 
 <style lang="stylus" scoped>
 
-@import '../assets/style.styl';
+@import '../assets/stylus/style.styl';
 
 </style>

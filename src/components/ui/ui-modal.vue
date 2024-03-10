@@ -29,6 +29,8 @@ export default {
   }
 }
 </script>
+
+
 <style scoped>
 .modal-animation-enter-active,
 .modal-animation-leave-active {

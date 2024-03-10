@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { useTasks } from "@/stores/tasks";
+import { useTasks } from "@/store/tasks";
 import UiTaskListItem from "@/components/ui/ui-task-list-item.vue";
 
 export default {
@@ -30,5 +30,3 @@ export default {
     },
 };
 </script>
-
-<style scoped></style>

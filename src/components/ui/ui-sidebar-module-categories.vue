@@ -33,7 +33,6 @@ export default {
 }
 </script>
 
-
 <style scoped>
 .categories-content {
     display: flex;

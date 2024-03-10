@@ -12,7 +12,7 @@ export const useTasks = defineStore({
   }),
   actions: {
     createTask(obj) {
-      const randomId =  Math.floor(Math.random() * 1000);
+      const randomId =  Math.floor(Math.random() * 100000);
       const task = {...obj , id: randomId, finished: false };
       this.tasks.push(task);
       this.orderTasks();

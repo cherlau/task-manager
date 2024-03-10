@@ -45,7 +45,7 @@ import UiModal from "@/components/ui/ui-modal"
 import UiCheckbox from "@/components/ui/ui-checkbox"
 import UiKebabMenu from "@/components/ui/ui-kebab-menu"
 import { ref, watch } from "vue";
-import { useTasks } from "@/stores/tasks";
+import { useTasks } from "@/store/tasks";
 
 export default {
     name: "UiTaskListItem",

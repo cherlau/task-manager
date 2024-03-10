@@ -64,17 +64,3 @@
   }
 </script>
   
-<style scoped>
-
-.ui-textarea  textarea {
-    resize: none;
-    overflow: auto;
-    padding: 13px;
-}
-
-.ui-textarea {
-    margin-bottom: 4px;
-}
-
-</style>
-  

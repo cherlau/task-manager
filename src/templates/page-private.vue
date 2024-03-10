@@ -46,14 +46,6 @@ export default {
 };
 </script>
 
-<style scoped>
-.task-page {
-    height: 100%;
-    display: flex;
-}
-
-.side-bar {
-    display: flex;
-    position: fixed;
-}
+<style lang="stylus" scoped>
+  @import '../assets/stylus/style.styl'; 
 </style>
