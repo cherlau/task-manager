@@ -52,9 +52,9 @@ export default {
         finishEdit(taskId) {
             if (this.editTitle !== "") {
 
-                if (this.editTipo === 'Urgente') this.editTipo = 'urgent'
-                if (this.editTipo === 'Importante') this.editTipo = 'important'
-                if (this.editTipo === 'Outras') this.editTipo = 'others'
+                if (this.editTipo === 'urgente') this.editTipo = 'urgent'
+                if (this.editTipo === 'importante') this.editTipo = 'important'
+                if (this.editTipo === 'outras') this.editTipo = 'others'
 
                 this.$emit("task-edited", {
                     taskId: taskId,
@@ -77,7 +77,7 @@ export default {
         const editTitle = ref(props.task.title);
         const editDescription = ref(props.task.description);
         const editTipo = ref(props.task.tipo);
-        const optionsRadio = ref(['urgent', 'important', 'others'])
+        const optionsRadio = ref(['urgente', 'importante', 'outras'])
 
         return { editTitle, editDescription, editTipo, optionsRadio };
     },
