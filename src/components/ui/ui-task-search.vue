@@ -31,31 +31,3 @@ export default defineComponent({
 <style lang="stylus" scoped>
     @import '../../assets/stylus/styles.styl';
 </style> 
-
-<style scoped>
-.task-search-content {
-    position: relative;
-}
-
-.task-search-content input {
-    box-sizing: border-box;
-    width: 100%;
-    padding: 18px 0 18px 18px;
-    margin-bottom: 30px;
-    background-color: #e9f4fb;
-    /* border: 3px solid #bfdaeb */
-}
-
-input::placeholder {
-    color: #a6c1d2;
-    font-size: 17px;
-}
-
-.fa-solid {
-    position: absolute;
-    right: 10px;
-    top: 15px;
-    font-size: 27px;
-    color: #bfdaeb;
-}
-</style>

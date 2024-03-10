@@ -24,31 +24,8 @@ export default {
 
 <style lang="stylus" scoped>
     @import '../../assets/stylus/styles.styl';
+
+    &div:last-of-type 
+        border-bottom: 1px solid rgba(255, 255, 255, 0.219)
 </style> 
 
-<style scoped>
-h3 {
-    color: #fff;
-    font-size: 12px;
-    margin-top: 8px;
-}
-
-.sidebar-module-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 19px 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.219);
-    width: 100%;
-    cursor: pointer;
-}
-
-div:last-of-type {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.219);
-}
-
-.highlighted {
-    background-color: #1182f2;
-    /* Adicione a cor que você deseja para destacar */
-}
-</style>

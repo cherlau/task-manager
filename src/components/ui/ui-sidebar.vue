@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="sidebar-component">
-            <div class="img-content"><img src="../../assets/imgs/facilita-logo.png" alt=""></div>
+            <div class="img-content-sidebar"><img src="../../assets/imgs/facilita-logo.png" alt=""></div>
             <div class="sidebar-component-container">
                 <div class="sidebar-module-content">
                     <ui-sidebar-modules v-for="(module, key) in modules" :key="key" :module="module" :moduleName="key"
@@ -86,34 +86,3 @@ export default {
 <style lang="stylus" scoped>
     @import '../../assets/stylus/styles.styl';
 </style> 
-
-<style scoped>
-.sidebar-component {
-    background-color: #2693ff;
-    height: 100vh;
-    width: 106px;
-}
-
-.img-content {
-    width: 75px;
-    margin: 7px auto auto;
-}
-
-.img-content img {
-    width: 100%;
-}
-
-.sidebar-component-container {
-    height: calc(100% - 180px);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.sidebar-module-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-</style>

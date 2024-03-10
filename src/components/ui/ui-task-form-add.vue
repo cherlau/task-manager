@@ -13,7 +13,6 @@
         <ui-textarea 
             id="descrição"
             label="Descrição:"
-            label-color="#5a7186" 
             height="179px"
             :value="description"
             v-model="description"
@@ -101,28 +100,3 @@ export default {
 <style lang="stylus" scoped>
     @import '../../assets/stylus/styles.styl';
 </style> 
-
-<style scoped>
-.modal-add {
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  min-width: 660px;
-  padding: 20px 40px;
-  border-radius: 7px;
-  gap: 10px;
-  background-color: white;
-  border: none;
-}
-
-.modal-add h2{
-  margin: 9px 0 25px;
-}
-
-.modal-add-bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-</style>

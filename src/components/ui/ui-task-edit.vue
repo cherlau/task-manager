@@ -88,22 +88,3 @@ export default {
 <style lang="stylus" scoped>
     @import '../../assets/stylus/styles.styl';
 </style> 
-
-<style scoped>
-.task-edit-content {
-    display: flex;
-    flex-direction: column;
-    padding: 20px 15px 10px 20px;
-    gap: 10px;
-}
-
-.task-edit-radios{
-    display: flex;
-}
-
-.task-edit-buttons{
-    display: flex;
-    gap: 10px;
-}
-
-</style>

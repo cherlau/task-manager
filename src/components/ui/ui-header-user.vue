@@ -1,6 +1,6 @@
 <template>
     <div class="user-content">
-        <div class="img-content">
+        <div class="img-content-header">
             <img :src="user.img" alt="usuário">
         </div>
         <div>
@@ -28,31 +28,3 @@ export default {
 <style lang="stylus" scoped>
     @import '../../assets/stylus/styles.styl';
 </style> 
-
-<style scoped>
-.user-content {
-    display: flex;
-    align-items: center;
-    padding-inline: 34px;
-}
-
-.img-content {
-    width: 46px;
-    margin-right: 12px;
-}
-
-.img-content img {
-    width: 100%;
-    border-radius: 50%;
-}
-
-.user-content p {
-    font-weight: 700;
-}
-
-.user-content span {
-    font-size: 13px;
-    font-weight: 700;
-    color: #2693FF;
-}
-</style>

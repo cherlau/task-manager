@@ -1,6 +1,6 @@
 <template>
     <div class="flex-column ui-input">
-      <label v-if="label" :for="id" :style="{'color' : labelColor}">{{ label }}</label>
+      <label v-if="label" :for="id" :style="{'color' : labelColor}" >{{ label }}</label>
       <input 
           :type="type"
           :id="id"
@@ -75,17 +75,7 @@
       }
   }
 </script>
+
 <style lang="stylus" scoped>
-@import '../../assets/stylus/styles.styl';
+    @import '../../assets/stylus/styles.styl';
 </style> 
-<style scoped>
-.ui-input label{
-    margin-bottom: 4px;
-}
-
-.ui-input input{
-    margin-bottom: 18px;
-}
-
-</style>
-  
