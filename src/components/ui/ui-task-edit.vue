@@ -77,8 +77,7 @@ export default {
         const editTitle = ref(props.task.title);
         const editDescription = ref(props.task.description);
         const editTipo = ref(props.task.tipo);
-        const optionsRadio = ref(['Urgente', 'Importante', 'Outras'])
-
+        const optionsRadio = ref(['urgent', 'important', 'others'])
 
         return { editTitle, editDescription, editTipo, optionsRadio };
     },
