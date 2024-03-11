@@ -32,7 +32,7 @@ import UiInput from '@/components/ui/ui-input'
 import uiTextarea from '@/components/ui/ui-textarea';
 import UiRadio from '@/components/ui/ui-radio'
 import UiButton from '@/components/ui/ui-button'
-import { ref } from "vue";
+import { ref, watch } from "vue";
 
 export default {
     name: "UiTaskEdit",
@@ -77,6 +77,18 @@ export default {
         const editDescription = ref(props.task.description);
         const editTipo = ref(props.task.tipo);
         const optionsRadio = ref(['urgente', 'importante', 'outras'])
+
+        watch(() => props.task.title, (newValue) => {
+            editTitle.value = newValue
+        })
+
+        watch(() => props.task.description, (newValue) => {
+            editDescription.value = newValue
+        })
+
+        watch(() => props.task.tipo, (newValue) => {
+            editTipo.value = newValue
+        })
 
         return { editTitle, editDescription, editTipo, optionsRadio };
     },
