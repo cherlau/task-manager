@@ -12,7 +12,6 @@
         <ui-textarea 
           id="descrição"
           label="Descrição:"
-          label-color="#5a7186"
           height="100px"
           :value="editDescription"
           v-model="editDescription"

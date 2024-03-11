@@ -23,7 +23,6 @@
 
                 <ui-button
                     type="submit"
-                    color="#fff"
                     design="xxl sucess"
                     :loading="loading">Entrar</ui-button>
 
