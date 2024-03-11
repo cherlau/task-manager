@@ -69,6 +69,10 @@ export default {
         const finishedCheck = ref(props.task.finished);
         const modalActive = ref(false)
 
+        watch(() => props.task.finished, (newValue) => {
+            finishedCheck.value = newValue
+        })
+
         const toggleModal = () => {
             showRemoveConfirm.value = !showRemoveConfirm.value
             modalActive.value = !modalActive.value;
