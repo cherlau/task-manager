@@ -19,8 +19,10 @@
             :task-id="task.id" 
             :show-edit-task="showEditTask" 
             :show-remove-confirm="showRemoveConfirm"
+            :showMenu="showMenu"
+            @click-icon="handleKebabMenu"
         ></ui-kebab-menu>
-      </div>
+      </div> 
 
       <ui-task-edit 
         :showEditTask="showEditTask" 
@@ -145,6 +147,10 @@ export default {
           updateFinishedStatus();
         };
 
+        const handleKebabMenu = () => {
+          showMenu.value = !showMenu.value
+        }
+
         return {
             handleCheckboxChange,
             removeTask,
@@ -158,7 +164,8 @@ export default {
             showMenu,
             translateTipo,
             modalActive,
-            toggleModal
+            toggleModal,
+            handleKebabMenu
         };
     },
 };

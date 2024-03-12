@@ -8,12 +8,12 @@
             <span></span>Excluir
           </button> 
         </div>
-        <i  class="fa-solid fa-ellipsis-vertical" @click="show = !show" :class="{ 'task-item-menu-clicked-icon': show }"></i>
+        <i  class="fa-solid fa-ellipsis-vertical" @click="clickIcon()" :class="{ 'task-item-menu-clicked-icon': show }"></i>
     </div>
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 
 export default{
     name: 'UiKebabMenu',
@@ -32,6 +32,11 @@ export default{
             required: false,
             default: false
         },
+        showMenu: {
+            typeof: Boolean,
+            required: false,
+            default: false
+        }
     },
     methods:{
         startTaskEdit(){
@@ -39,10 +44,18 @@ export default{
         },
         removeTask(taskId){
             this.$emit('remove-task', taskId)
+        },
+        clickIcon() {
+            console.log('aqui')
+            this.$emit('click-icon');
         }
     },
-    setup(){
-        const show = ref(false)
+    setup(props){
+        const show = ref(props.showMenu)
+
+        watch(() => props.showMenu, (newValue) => {
+            show.value = newValue
+        })
 
         return { show }
     }
