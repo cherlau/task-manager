@@ -49,7 +49,7 @@ export default {
     },
     methods: {
         finishEdit(taskId) {
-            if (this.editTitle !== "") {
+            if (this.editTitle !== "" && this.editDescription !== "") {
 
                 if (this.editTipo === 'urgente') this.editTipo = 'urgent'
                 if (this.editTipo === 'importante') this.editTipo = 'important'
@@ -62,10 +62,6 @@ export default {
                     editTipo: this.editTipo,
                     finished: this.task.finished
                 });
-
-                this.editTitle = "";
-                this.editDescription = "";
-                this.editTipo = "others";
             }
         },
         cancelEdit() {
