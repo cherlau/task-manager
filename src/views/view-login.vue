@@ -27,9 +27,14 @@
                     :loading="loading">Entrar</ui-button>
 
                 <div class="message-error" v-show="showError">
-                    <p>Usuário ou senha inválidos, tente novamente</p>
+                    <p>Usuário ou senha inválidos
+                        <br><br>
+                        Nome de usuário: cherlau
+                        <br>
+                        Senha: 1234
+                    </p>
                 </div>
-                <a href="#">Esqueci minha senha</a>
+                <a href="#" @click="getDataLogin()">Esqueci minha senha</a>
             </form>
         </div>
     </div>
@@ -66,7 +71,12 @@ export default {
             }, "2000");
         }
 
-        return { user, password, submitLogin, showError, loading }
+        function getDataLogin(){
+            user.value = 'cherlau'
+            password.value = '1234'
+        }
+
+        return { user, password, submitLogin, showError, loading, getDataLogin }
     },
 };
 </script>
