@@ -1,12 +1,7 @@
-<h1 align="center">Teste Facilita vaga Front-end developer em Vue.js</h1><br>
+<h1 align="center">Teste para vaga de Front-end developer em Vue.js</h1><br>
 
 <strong>Hospedado:</strong> https://cherlau-facilitatasks.netlify.app/
 
-## Login e senha
-```
-Login: cherlau
-Senha: 1234
-```
 
 ## 🚧 Projeto
 <p align="center">
@@ -26,6 +21,11 @@ Senha: 1234
 </p>
 
 <br>
+
+## Clone
+```
+git clone git@github.com:cherlau/task-manager.git
+```
 
 ## Project setup
 ```
